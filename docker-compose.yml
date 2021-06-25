@@ -1,11 +1,14 @@
 version: "3"
 services:
   redis4proxypool:
-    image: redis:alpine
+    image: redis:6.2.4-alpine
     container_name: redis4proxypool
     ports:
       - "6374:6379"
-    # restart: always
+    restart: always
+    volumes:
+      - ./data:/data
+    command: ["redis-server", "--appendonly", "yes"]
   proxypool:
     build: .
     image: "germey/proxypool"
