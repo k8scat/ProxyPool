@@ -10,8 +10,7 @@ services:
       - ./data:/data
     command: ["redis-server", "--appendonly", "yes"]
   proxypool:
-    build: .
-    image: "germey/proxypool"
+    image: "k8scat/proxypool:latest"
     container_name: proxypool
     ports:
       - "5555:5555"
